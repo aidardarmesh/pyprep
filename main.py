@@ -1,4 +1,4 @@
-from decorators import timer, debug
+from decorators import timer, debug, slow_down
 
 @timer
 def waste_some_time(num_times):
@@ -12,5 +12,11 @@ def make_greeting(name, age=None):
     else:
         return f"Whoa, {name}! {age} already, growing up!"
 
-make_greeting("Benjamin")
-make_greeting("Juan", age=114)
+@slow_down
+def countdown(from_number):
+    if from_number < 1:
+        print("Liftoff!")
+    else:
+        print(from_number)
+        countdown(from_number - 1)
+
