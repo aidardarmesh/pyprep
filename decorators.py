@@ -1,9 +1,12 @@
-def say_hello(name):
-    return f"Hello, {name}!"
+def say_whee():
+    print("Whee!")
 
-def be_awesome(name):
-    return f"Yo {name}, together we're cool!"
+def decorator(func):
+    def wrapper():
+        print("Something happened before argument that is function")
+        func()
+        print("Something happened after argument that is function")
+    
+    return wrapper
 
-def greet_bob(greet_func):
-    return greet_func("Bob")
-
+say_whee = decorator(say_whee)
