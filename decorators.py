@@ -1,6 +1,3 @@
-def say_whee():
-    print("Whee!")
-
 def decorator(func):
     def wrapper():
         print("Something happened before argument that is function")
@@ -9,4 +6,6 @@ def decorator(func):
     
     return wrapper
 
-say_whee = decorator(say_whee)
+@decorator
+def say_whee():
+    print("Whee!")
