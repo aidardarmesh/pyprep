@@ -1,11 +1,12 @@
-def decorator(func):
-    def wrapper():
-        print("Something happened before argument that is function")
-        func()
-        print("Something happened after argument that is function")
-    
-    return wrapper
+import functools
 
-@decorator
+def do_twice(func):
+    @functools.wraps(func)
+    def wrapper_do_twice(*args, **kwargs):
+        func(*args, **kwargs)
+        return func(*args, **kwargs)
+    return wrapper_do_twice
+
+@do_twice
 def say_whee():
     print("Whee!")
