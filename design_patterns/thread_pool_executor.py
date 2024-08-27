@@ -1,3 +1,9 @@
+"""
+Used for better resource utilization when processing large amount of tasks:
+* Batch Processing
+* Load Balancing
+"""
+
 from concurrent.futures import ThreadPoolExecutor
 import time
 
