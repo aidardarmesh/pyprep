@@ -1,6 +1,7 @@
 """
 Iterator is an object that allows you to traverse through all elements 
 of a collection one at a time without indexing them explicitly. 
+Implements __iter__() that returns itself and __next__() that returns next time. 
 """
 
 class Reverse:
