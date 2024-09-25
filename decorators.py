@@ -1,15 +1,39 @@
 import functools
 
-def decorator(func):
-    @functools.wraps(func)
-    def wrapper_decorator(*args, **kwargs):
-        value = func(*args, **kwargs)
-        return value
-    return wrapper_decorator
+# def decorator(saying):
+#     print(saying)
+#     def inner_fn(func):
+#         @functools.wraps(func)
+#         def wrapper_decorator(*args, **kwargs):
+#             value = func(*args, **kwargs)
+#             return value
+#         return wrapper_decorator
+#     return inner_fn
 
-@decorator
+class Decorator:
+    def __init__(self, saying):
+        self.saying = saying
+
+    def __call__(self, func):
+        print(self.saying)
+
+        @functools.wraps(func)
+        def wrapper_decorator(*args, **kwargs):
+            value = func(*args, **kwargs)
+            return value
+        return wrapper_decorator
+
+
+Decorator("abc")
+
+
+@Decorator("abc")
 def say_whee():
     print("Whee!")
+
+
+new_say_whee = Decorator("abc")(say_whee)()
+
 
 import time
 

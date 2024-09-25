@@ -1,22 +1,30 @@
-from decorators import timer, debug, slow_down
+# Task: Last4
+# Hide the credit card number, display only last 4 digits
 
-@timer
-def waste_some_time(num_times):
-    for _ in range(num_times):
-        sum([num ** 2 for num in range(10_000)])
+# Example Input:
+# 1234123456789989
+# Example Output:
+# ************9989
 
-@debug
-def make_greeting(name, age=None):
-    if age is None:
-        return f"Howdy, {name}!"
-    else:
-        return f"Whoa, {name}! {age} already, growing up!"
+# Example Input:
+# 789989
+# Example Output:
+# **9989
 
-@slow_down
-def countdown(from_number):
-    if from_number < 1:
-        print("Liftoff!")
-    else:
-        print(from_number)
-        countdown(from_number - 1)
+
+CREDIT_CARD_LENGTH = 16
+SHOWN_WILDCARD = 4
+
+
+def last4_challenge(s: str | list[str]) -> str:
+    if len(s) < CREDIT_CARD_LENGTH:
+        raise ValueError("Credit card length is incorrect")
+
+    masked = '*' * (len(s) - SHOWN_WILDCARD)
+    shown = s[len(s) - SHOWN_WILDCARD:]
+    return masked + shown
+
+
+print(last4_challenge("1234123456789989"))
+print(last4_challenge("1234123456789989".split()))
 
